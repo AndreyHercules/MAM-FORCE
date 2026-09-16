@@ -1,82 +1,45 @@
-const products = [
-    { id: 1, name: "Dog Tag Personalizada", price: 45.00, img: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300", desc: "Aço inoxidável com gravação a laser." },
-    { id: 2, name: "Patch Emborrachado Tático", price: 25.00, img: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=300", desc: "Fixação em velcro de alta aderência." },
-    { id: 3, name: "Mochila Tática MOLLE 45L", price: 280.00, img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300", desc: "Nylon 600D resistente à água." }
-  ];
-  
-  let cart = JSON.parse(localStorage.getItem('mam_cart')) || [];
-  let currentUser = localStorage.getItem('mam_user') || null;
-  
-  function renderProducts() {
-    const container = document.getElementById('products-container');
-    container.innerHTML = products.map(p => `
-      <div class="card">
-        <img src="${p.img}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <p>${p.desc}</p>
-        <p><strong>R$ ${p.price.toFixed(2)}</strong></p>
-        <button onclick="addToCart(${p.id})">Adicionar ao Carrinho</button>
-      </div>
-    `).join('');
+const produtos = [
+  {
+    id: 1,
+    nome: "Dog Tag Militar Dupla",
+    preco: 49.90,
+    imagem: "img/dogtag.jpg",
+    descricao: "Plaqueta de identificação militar dupla em aço inox com corrente e silenciadores de borracha."
+  },
+  {
+    id: 2,
+    nome: "Mochila Tática Modular 45L",
+    preco: 229.90,
+    imagem: "img/mochila.jpg",
+    descricao: "Mochila tática preta de alta resistência com sistema MOLLE e compartimentos multifuncionais."
+  },
+  {
+    id: 3,
+    nome: "Kit Patches Táticos Emborrachados",
+    preco: 35.00,
+    imagem: "img/patches.jpg",
+    descricao: "Conjunto de patches emborrachados em alto relevo com fixação por velcro."
   }
-  
-  function addToCart(id) {
-    const product = products.find(p => p.id === id);
-    cart.push(product);
-    localStorage.setItem('mam_cart', JSON.stringify(cart));
-    updateUI();
-  }
-  
-  function openModal() { document.getElementById('login-modal').style.display = 'flex'; }
-  function openCart() { renderCartModal(); document.getElementById('cart-modal').style.display = 'flex'; }
-  function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-  
-  function renderCartModal() {
-    const cartList = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    cartList.innerHTML = cart.map(item => `<li>${item.name} - R$ ${item.price.toFixed(2)}</li>`).join('');
-    cartTotal.textContent = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-  }
-  
-  function checkout() {
-    if (cart.length === 0) return alert("Carrinho vazio!");
-    if (!currentUser) return alert("Faça login para finalizar!");
-    alert(`Pedido confirmado para: ${currentUser}`);
-    cart = [];
-    localStorage.removeItem('mam_cart');
-    updateUI();
-    closeModal('cart-modal');
-  }
-  
-  document.getElementById('login-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    currentUser = document.getElementById('username').value;
-    localStorage.setItem('mam_user', currentUser);
-    updateUI();
-    closeModal('login-modal');
+];
+
+function renderizarProdutos() {
+  const container = document.getElementById("produtos-container");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  produtos.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${p.imagem}" alt="${p.nome}" style="width:100%; height:200px; object-fit:cover; border-radius:4px; margin-bottom:1rem;">
+      <h3>${p.nome}</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">${p.descricao}</p>
+      <div class="price">R$ ${p.preco.toFixed(2)}</div>
+      <button onclick="adicionarAoCarrinho(${p.id})">Adicionar ao Carrinho</button>
+    `;
+    container.appendChild(card);
   });
-  
-  function logout() {
-    currentUser = null;
-    localStorage.removeItem('mam_user');
-    updateUI();
-  }
-  
-  function updateUI() {
-    document.getElementById('cart-count').textContent = cart.length;
-    const welcomeMsg = document.getElementById('welcome-msg');
-    const authBtn = document.getElementById('auth-btn');
-  
-    if (currentUser) {
-      welcomeMsg.textContent = `Operador: ${currentUser}`;
-      authBtn.textContent = 'Sair';
-      authBtn.onclick = logout;
-    } else {
-      welcomeMsg.textContent = '';
-      authBtn.textContent = 'Login';
-      authBtn.onclick = openModal;
-    }
-  }
-  
-  renderProducts();
-  updateUI();
+}
+
+document.addEventListener("DOMContentLoaded", renderizarProdutos);
