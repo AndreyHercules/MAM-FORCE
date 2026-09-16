@@ -10,7 +10,7 @@ const produtos = [
     id: 2,
     nome: "Mochila Tática Modular 45L",
     preco: 229.90,
-    imagem: "img/mocilha.png",
+    imagem: "img/mochila.png",
     descricao: "Mochila tática preta de alta resistência com sistema MOLLE e compartimentos multifuncionais."
   },
   {
