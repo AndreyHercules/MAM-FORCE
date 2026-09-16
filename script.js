@@ -34,12 +34,14 @@ function renderizarProdutos() {
     card.innerHTML = `
       <img src="${p.imagem}" alt="${p.nome}" style="width:100%; height:200px; object-fit:cover; border-radius:4px; margin-bottom:1rem;">
       <h3>${p.nome}</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">${p.descricao}</p>
-      <div class="price">R$ ${p.preco.toFixed(2)}</div>
-      <button onclick="adicionarAoCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.5rem;">${p.descricao}</p>
+      <div class="price" style="color: #4caf50; font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0;">R$ ${p.preco.toFixed(2)}</div>
+      <button style="background-color: #ff6f00; color: #fff; border: none; padding: 0.6rem; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%;">Adicionar ao Carrinho</button>
     `;
     container.appendChild(card);
   });
 }
 
+// Garante que o script roda após o HTML carregar completamente
 document.addEventListener("DOMContentLoaded", renderizarProdutos);
+renderizarProdutos();
