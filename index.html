@@ -3,53 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>MAM-FORCE | Artigos Militares</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+  <!-- ================= HEADER ================= -->
+
   <header>
+
     <h1>MAM-FORCE</h1>
+
     <div class="user-panel">
+
       <span id="welcome-msg"></span>
-      <button id="cart-btn" onclick="openCart()">🛒 Carrinho (<span id="cart-count">0</span>)</button>
-      <button id="auth-btn" onclick="openModal()">Login</button>
+
+      <button
+        id="cart-btn"
+        type="button"
+        onclick="openCart()"
+      >
+        🛒 Carrinho
+        (<span id="cart-count">0</span>)
+      </button>
+
+      <button
+        id="auth-btn"
+        type="button"
+        onclick="openLogin()"
+      >
+        Login
+      </button>
+
     </div>
+
   </header>
 
+
+  <!-- ================= CONTEÚDO ================= -->
+
   <main>
-      <h2>Equipamentos Táticos</h2>
-      <div id="produtos-container" class="products-grid"></div>
+
+    <h2>Equipamentos Táticos</h2>
+
+    <div
+      id="produtos-container"
+      class="products-grid"
+    ></div>
+
   </main>
 
-  <!-- Modal de Login -->
-  <div id="login-modal" class="modal">
+
+  <!-- ================= MODAL LOGIN ================= -->
+
+  <div
+    id="login-modal"
+    class="modal"
+  >
+
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
-      <h3>Autenticação Tática</h3>
+
+      <button
+        class="close-btn"
+        type="button"
+        onclick="closeModal('login-modal')"
+      >
+        &times;
+      </button>
+
+      <h3>🔐 Entrar na Conta</h3>
+
       <form id="login-form">
-        <label for="username">Usuário / Recruta:</label>
-        <input type="text" id="username" required placeholder="Digite seu nome">
-        <label for="password">Senha:</label>
-        <input type="password" id="password" required placeholder="••••••••">
-        <button type="submit">Acessar Conta</button>
+
+        <label for="login-email">
+          E-mail
+        </label>
+
+        <input
+          type="email"
+          id="login-email"
+          placeholder="seu@email.com"
+          required
+        >
+
+        <label for="login-password">
+          Senha
+        </label>
+
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Digite sua senha"
+          required
+        >
+
+        <button type="submit">
+          Entrar
+        </button>
+
       </form>
+
+      <p class="modal-link">
+        Ainda não possui uma conta?
+        <button
+          type="button"
+          onclick="openRegister()"
+        >
+          Cadastre-se
+        </button>
+      </p>
+
     </div>
+
   </div>
 
-  <!-- Modal do Carrinho -->
-  <div id="cart-modal" class="modal">
-    <div class="modal-content cart-content">
-      <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
-      <h3>Itens Selecionados</h3>
-      <ul id="cart-items"></ul>
-      <div class="cart-summary">
-        <strong>Total: R$ <span id="cart-total">0.00</span></strong>
-      </div>
-      <button onclick="checkout()" class="checkout-btn">Finalizar Pedido</button>
+
+  <!-- ================= MODAL CADASTRO ================= -->
+
+  <div
+    id="register-modal"
+    class="modal"
+  >
+
+    <div class="modal-content">
+
+      <button
+        class="close-btn"
+        type="button"
+        onclick="closeModal('register-modal')"
+      >
+        &times;
+      </button>
+
+      <h3>📝 Criar Conta</h3>
+
+      <form id="register-form">
+
+        <label for="register-name">
+          Nome
+        </label>
+
+        <input
+          type="text"
+          id="register-name"
+          placeholder="Seu nome"
+          required
+        >
+
+        <label for="register-email">
+          E-mail
+        </label>
+
+        <input
+          type="email"
+          id="register-email"
+          placeholder="seu@email.com"
+          required
+        >
+
+        <label for="register-password">
+          Senha
+        </label>
+
+        <input
+          type="password"
+          id="register-password"
+          placeholder="Crie uma senha"
+          minlength="6"
+          required
+        >
+
+        <label for="register-confirm-password">
+          Confirmar senha
+        </label>
+
+        <input
+          type="password"
+          id="register-confirm-password"
+          placeholder="Repita sua senha"
+          minlength="6"
+          required
+        >
+
+        <button type="submit">
+          Criar Conta
+        </button>
+
+      </form>
+
+      <p class="modal-link">
+        Já possui uma conta?
+        <button
+          type="button"
+          onclick="openLogin()"
+        >
+          Fazer login
+        </button>
+      </p>
+
     </div>
+
   </div>
+
+
+  <!-- ================= MODAL CARRINHO ================= -->
+
+  <div
+    id="cart-modal"
+    class="modal"
+  >
+
+    <div class="modal-content cart-content">
+
+      <button
+        class="close-btn"
+        type="button"
+        onclick="closeModal('cart-modal')"
+      >
+        &times;
+      </button>
+
+      <h3>🛒 Seu Carrinho</h3>
+
+      <ul id="cart-items"></ul>
+
+      <div class="cart-summary">
+
+        <strong>
+          Total:
+          R$ <span id="cart-total">0,00</span>
+        </strong>
+
+      </div>
+
+      <button
+        type="button"
+        class="checkout-btn"
+        onclick="checkout()"
+      >
+        Finalizar Pedido
+      </button>
+
+    </div>
+
+  </div>
+
 
   <script src="script.js"></script>
+
 </body>
 </html>
