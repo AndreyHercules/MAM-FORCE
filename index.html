@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAM-FORCE | Artigos Militares</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>MAM-FORCE</h1>
+    <div class="user-panel">
+      <span id="welcome-msg"></span>
+      <button id="cart-btn" onclick="openCart()">🛒 Carrinho (<span id="cart-count">0</span>)</button>
+      <button id="auth-btn" onclick="openModal()">Login</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Equipamentos Táticos</h2>
+    <div class="products-grid" id="products-container"></div>
+  </main>
+
+  <!-- Modal de Login -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+      <h3>Autenticação Tática</h3>
+      <form id="login-form">
+        <label for="username">Usuário / Recruta:</label>
+        <input type="text" id="username" required placeholder="Digite seu nome">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required placeholder="••••••••">
+        <button type="submit">Acessar Conta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content cart-content">
+      <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
+      <h3>Itens Selecionados</h3>
+      <ul id="cart-items"></ul>
+      <div class="cart-summary">
+        <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+      </div>
+      <button onclick="checkout()" class="checkout-btn">Finalizar Pedido</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
