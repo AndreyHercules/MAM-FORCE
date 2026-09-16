@@ -3,21 +3,21 @@ const produtos = [
     id: 1,
     nome: "Dog Tag Militar Dupla",
     preco: 49.90,
-    imagem: "img/dogtag.jpg",
+    imagem: "img/dogtag.png",
     descricao: "Plaqueta de identificação militar dupla em aço inox com corrente e silenciadores de borracha."
   },
   {
     id: 2,
     nome: "Mochila Tática Modular 45L",
     preco: 229.90,
-    imagem: "img/mochila.jpg",
+    imagem: "img/mocilha.png",
     descricao: "Mochila tática preta de alta resistência com sistema MOLLE e compartimentos multifuncionais."
   },
   {
     id: 3,
     nome: "Kit Patches Táticos Emborrachados",
     preco: 35.00,
-    imagem: "img/patches.jpg",
+    imagem: "img/patch.png",
     descricao: "Conjunto de patches emborrachados em alto relevo com fixação por velcro."
   }
 ];
