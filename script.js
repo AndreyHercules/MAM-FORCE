@@ -42,6 +42,19 @@ const produtos = [
     descricao:
       "Conjunto de patches emborrachados em alto relevo com fixação por velcro."
   }
+   {
+
+    id: 4,
+
+    nome: "Lanterna Tática Recarregável",
+
+    preco: 89.90,
+
+    imagem: "images.assets/Lanterna.webp",
+
+    descricao:
+      "Lanterna tática de LED com zoom ajustável, resistente à água e recarregável via USB."
+    }
 
 ];
 
